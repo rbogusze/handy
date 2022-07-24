@@ -3,11 +3,12 @@
 pids=""
 
 number=$1
+script=$2
 
 START_TIME=`date +%s`
 
 for i in `seq 1 $number`; do
-   ./do_the_work.sh &
+   ./$script &
    pids="$pids $!"
 done
 
