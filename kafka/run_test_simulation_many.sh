@@ -11,7 +11,7 @@ while [ ${CURRENT} -ne ${END} ]
 do
   CURRENT=`expr ${CURRENT} + ${STEP}`
   echo "run test ${CURRENT}"
-  ./kafka-producer-perf-test.sh --topic kafka__schema-registry__rboguszewicz__t${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
+  ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
   sleep 1
 done
 
