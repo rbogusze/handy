@@ -13,6 +13,12 @@ do
   echo "run test ${CURRENT}"
   ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
   sleep 1
+
+  # create endless loop
+  if [ ${CURRENT} -eq $END ]; then
+    echo "Once again from start"
+    CURRENT=0
+  fi
 done
 
 END_TIME=`date +%s`
