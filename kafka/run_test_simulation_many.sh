@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/rboguszewicz/kafka/bin
+cd ${KAFKA_BIN}
 echo "run test"
 START_TIME=`date +%s`
 
