@@ -24,7 +24,7 @@ do
     #./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 9900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
 
     # no limit
-    ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput -1 --num-records 1900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS} | awk -v var="$CURRENT" '{print var": " $0 }' &
+    ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput -1 --num-records 5900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS} | awk -v var="$CURRENT" '{print var": " $0 }' &
     sleep 1
     V_EXECUTE_COUNT=`expr $V_EXECUTE_COUNT + 1`
   done
