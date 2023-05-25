@@ -10,8 +10,17 @@ END=200
 while [ ${CURRENT} -ne ${END} ]
 do
   CURRENT=`expr ${CURRENT} + ${STEP}`
+
+  # introduce some random stuff
+  CURRENT=$[ ( $RANDOM % $END )  + 1 ]
+
   echo "run test ${CURRENT}"
-  ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
+
+  # with throuput limit
+  #./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
+
+  # no limit
+  ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput -1 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
   sleep 1
 
   # create endless loop
