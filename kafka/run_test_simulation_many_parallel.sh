@@ -1,8 +1,9 @@
 #!/bin/bash
+
 cd ${KAFKA_BIN}
 
-# number of parallel executions
-V_EXECUTE=2
+# number of parallel executions, by default 2 if not set with V_EXECUTE variable
+[ -z "$V_EXECUTE" ] && V_EXECUTE=2
 
 # range, topic number
 CURRENT=0
