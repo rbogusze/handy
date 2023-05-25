@@ -21,7 +21,7 @@ do
     echo "run test ${CURRENT}"
 
     # with throuput limit
-    #./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
+    #./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput 30000 --num-records 9900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS}
 
     # no limit
     ./kafka-producer-perf-test.sh --topic ${TOPIC_NAME}${CURRENT}  --throughput -1 --num-records 900000 --record-size 1024 --producer-props acks=all bootstrap.servers=${BOOTSTRAP_SERVERS} | awk -v var="$CURRENT" '{print var": " $0 }' &
